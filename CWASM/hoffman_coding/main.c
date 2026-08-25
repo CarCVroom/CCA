@@ -8,4 +8,6 @@ int main(void) {
 	if (result != SUCCESS) {
 		printf("Something went wrong, error code: %d", result);
 	}
+
+	return 0;
 }
