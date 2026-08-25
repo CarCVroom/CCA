@@ -1,2 +1,2 @@
-main: main.c frequency.c 
-	gcc main.c frequency.c -o main
+main: main.c frequency.c sort.c
+	gcc main.c frequency.c sort.c -o main
