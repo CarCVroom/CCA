@@ -56,6 +56,10 @@ int frequency_count(char *input) {
 	free(chache);
 	int l = 0;
 	int r = chararcters_count - 1;
+	for (int k = 0; k < chararcters_count; ++k) {
+		printf("%c, %d\n", characters[k].charName, characters[k].frequency);
+	}
+	printf("\n\n");
 	sort(characters, chararcters_count, &l, &r);
 	for (int k = 0; k < chararcters_count; ++k) {
 		printf("%c, %d\n", characters[k].charName, characters[k].frequency);
