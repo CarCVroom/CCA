@@ -4,13 +4,13 @@
 #include <string.h>
 #include "sort.h"
 
-int frequency_count(char *input) {
+int frequency_count(char *input, Character **characters, int *chararcters_count) {
 	char *chache = malloc(3);
 	int len = 0;
 	int capacity = 2;
 
-	Character *characters = NULL;
-	int chararcters_count = 0;
+	Character *local_characters = NULL;
+    	int local_count = 0;
 
 	for (int i = 0; input[i] != '\0'; ++i) {
 		
@@ -32,19 +32,19 @@ int frequency_count(char *input) {
 				.frequency = 1
 			};
 			
-			chararcters_count++;
-			Character *tmpC = realloc(characters, chararcters_count * sizeof(Character));
+			local_count++;
+			Character *tmpC = realloc(local_characters, local_count * sizeof(Character));
 			if (tmpC == NULL) {
 				free(tmpC);
 				return ERR_ALLOC;
 			}
-			characters = tmpC;
-			characters[chararcters_count - 1] = character;
+			local_characters = tmpC;
+			local_characters[local_count - 1] = character;
 		} else {
 			//printf("Im in here%c", input[i]);
-			for (int j = 0; j < chararcters_count; j++) {
-				if (input[i] == characters[j].charName) {
-					characters[j].frequency++;
+			for (int j = 0; j < local_count; j++) {
+				if (input[i] == local_characters[j].charName) {
+					local_characters[j].frequency++;
 				}
 			}
 		}
@@ -55,14 +55,14 @@ int frequency_count(char *input) {
 	//printf("%s\n", chache);
 	free(chache);
 	int l = 0;
-	int r = chararcters_count - 1;
-	for (int k = 0; k < chararcters_count; ++k) {
-		printf("%c, %d\n", characters[k].charName, characters[k].frequency);
+	int r = local_count - 1;
+	for (int k = 0; k < local_count; ++k) {
+		printf("%c, %d\n", local_characters[k].charName, local_characters[k].frequency);
 	}
 	printf("\n\n");
-	sort(characters, chararcters_count, &l, &r);
-	for (int k = 0; k < chararcters_count; ++k) {
-		printf("%c, %d\n", characters[k].charName, characters[k].frequency);
-	}
+	sort(local_characters, local_count, &l, &r);
+
+	*characters = local_characters;
+    	*chararcters_count = local_count;
 	return 0;
 }
