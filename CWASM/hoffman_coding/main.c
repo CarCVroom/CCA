@@ -20,6 +20,7 @@ int main(void) {
 	}
 
 
+
 	free(characters);
 	return 0;
 }

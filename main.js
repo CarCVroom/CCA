@@ -7,6 +7,6 @@ function main(input) {
 	// Calls WASM 
 	
 	let output; // Get WASM out here
-	outputP.innerHTML = outputp; 
+	outputP.innerHTML = output; 
 	
 }
