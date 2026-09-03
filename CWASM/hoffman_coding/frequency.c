@@ -60,7 +60,7 @@ int frequency_count(char *input, Character **characters, int *chararcters_count)
 		printf("%c, %d\n", local_characters[k].charName, local_characters[k].frequency);
 	}
 	printf("\n\n");
-	sort(local_characters, local_count, &l, &r);
+	sort(local_characters, local_count, l, r);
 
 	*characters = local_characters;
     	*chararcters_count = local_count;
