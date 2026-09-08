@@ -2,7 +2,6 @@
 #include <stdio.h> 
 #include <stdlib.h>
 #include "frequency.h"
-#include "sort.h"
 #include "tree.h"
 
 int main(void) {

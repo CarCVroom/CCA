@@ -34,8 +34,6 @@ int make_huffman_tree(Character **characters, int *chararcters_count, Node **nod
 		printf("%c, %d\n", (*characters)[k].charName, (*characters)[k].frequency);
 	}
 
-		// Add node back into the array
-
 	while ((*chararcters_count) > 0 ) {
 		Node node = {
 			.frequency = local_nodes[local_count - 1].frequency + (*characters)[0].frequency
@@ -54,8 +52,6 @@ int make_huffman_tree(Character **characters, int *chararcters_count, Node **nod
 		    (*characters)[i] = (*characters)[i + 1];
 		}
 		(*chararcters_count)--;
-
-		//return SUCCESS;
 	}
 
 	for (int k = 0; k < local_count; ++k) {

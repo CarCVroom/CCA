@@ -7,22 +7,15 @@ int partition(Character *characters, int l, int r) {
 	for (int j = l; j < r ; j++) {
 		if (characters[j].frequency < pivot) {
 			i++;		
-			//printf("%d %d\n", j, i);
 			//swap
 			Character temp = characters[j];
 			characters[j] = characters[i]; 
 			characters[i] = temp;
-			//printf("%c, %d\n", temp.charName, temp.frequency);
 		}	
 	}
 	Character temp2 = characters[r];
 	characters[r] = characters[i + 1];
 	characters[i + 1] = temp2;
-	// Character temp2 = characters[*r];
-	// characters[*r] = characters[i + 1];
-	// characters[i + 1] = temp2;
-	//printf("%c, %d\n", temp2.charName, temp2.frequency);
-	//free(temp2);
 
 	return i + 1;
 }
