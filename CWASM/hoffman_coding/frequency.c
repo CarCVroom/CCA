@@ -5,7 +5,7 @@
 #include "sort.h"
 
 int frequency_count(char *input, Character **characters, int *chararcters_count) {
-	char *chache = malloc(3);
+	char *chache = malloc(4);
 	int len = 0;
 	int capacity = 2;
 
@@ -35,7 +35,7 @@ int frequency_count(char *input, Character **characters, int *chararcters_count)
 			local_count++;
 			Character *tmpC = realloc(local_characters, local_count * sizeof(Character));
 			if (tmpC == NULL) {
-				free(tmpC);
+				free(local_characters);
 				return ERR_ALLOC;
 			}
 			local_characters = tmpC;
