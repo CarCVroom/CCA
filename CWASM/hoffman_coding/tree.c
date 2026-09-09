@@ -7,7 +7,7 @@
 int make_huffman_tree(Character **characters, int *chararcters_count, Node **nodes, size_t *node_count) {
 
 	Node **local_nodes = NULL;
-    	size_t local_count = 0;
+    	int local_count = 0;
 
 	for (size_t i = 0; i < *chararcters_count; ++i) {
 	
@@ -83,13 +83,6 @@ int make_huffman_tree(Character **characters, int *chararcters_count, Node **nod
 		local_nodes[idx] = Mp;
 		local_count++;
 	}
-
-	// for (int k = 0; k < 2; ++k) {
-	// 	printf("%d ", local_nodes[k].frequency); // THIS WORKS WHAT THE FUCK (Still needs everything else and all of the left right shit)
-	// 	printf("%c\n", local_nodes[k].charName); // THIS WORKS WHAT THE FUCK (Still needs everything else and all of the left right shit)
-	// 	printf("%d\n", local_nodes[k].left->frequency); // THIS WORKS WHAT THE FUCK (Still needs everything else and all of the left right shit)
-	// 	printf("%d\n", local_nodes[k].right->frequency); // THIS WORKS WHAT THE FUCK (Still needs everything else and all of the left right shit)
-	// }
 
 	return SUCCESS;
 }
