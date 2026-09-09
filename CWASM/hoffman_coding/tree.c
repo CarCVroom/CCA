@@ -1,62 +1,95 @@
 #include "tree.h"
+#include "frequency.h"
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 int make_huffman_tree(Character **characters, int *chararcters_count, Node **nodes, size_t *node_count) {
 
-	Node *local_nodes = NULL;
+	Node **local_nodes = NULL;
     	size_t local_count = 0;
 
-	Node node = {
-		.frequency = (*characters)[0].frequency + (*characters)[1].frequency
-	};
-
-	local_count++;
-	Node *tmpN = realloc(local_nodes, local_count * sizeof(Node));
-	if (tmpN == NULL) {
-		free(local_nodes);
-		return ERR_ALLOC;
-	}
-	local_nodes = tmpN;
-	local_nodes[local_count - 1] = node;
-
-	printf(" %d\n", local_nodes[0].frequency);
-
-	// Removes elements from chararcters
-	for(int j = 0; j < 2; ++j) {
-		for (int i = 0; i < *chararcters_count - 1; i++) {
-		    (*characters)[i] = (*characters)[i + 1];
-		}
-		(*chararcters_count)--;
-	}
-			
-	for (int k = 0; k < *chararcters_count; ++k) {
-		printf("%c, %d\n", (*characters)[k].charName, (*characters)[k].frequency);
-	}
-
-	while ((*chararcters_count) > 0 ) {
+	for (size_t i = 0; i < *chararcters_count; ++i) {
+	
 		Node node = {
-			.frequency = local_nodes[local_count - 1].frequency + (*characters)[0].frequency
+			.frequency = (*characters)[i].frequency,
+			.charName = (*characters)[i].charName,
+			.left = NULL,
+			.right = NULL,
 		};
 
-		local_count++;
-		Node *tmpN = realloc(local_nodes, local_count * sizeof(Node));
+		Node *p = malloc(sizeof(Node));
+		if (p == NULL) {
+			free(local_nodes);
+			return ERR_ALLOC;
+		}
+		*p = node;
+
+		Node **tmpN = realloc(local_nodes, (local_count + 1) * sizeof(Node *));
 		if (tmpN == NULL) {
+			free(p);
 			free(local_nodes);
 			return ERR_ALLOC;
 		}
 		local_nodes = tmpN;
-		local_nodes[local_count - 1] = node;
+		local_nodes[local_count] = p;
+		local_count++;
 
-		for (int i = 0; i < *chararcters_count - 1; i++) {
-		    (*characters)[i] = (*characters)[i + 1];
+	}
+
+
+	while ((local_count) > 1 ) {
+		
+		Node merged = {
+			.frequency = local_nodes[0]->frequency + local_nodes[1]->frequency,
+			.left = local_nodes[0],
+			.right = local_nodes[1],
+		};
+		Node *Mp = malloc(sizeof(Node));
+		if (Mp == NULL) {
+			free(Mp);
+			free(local_nodes);
+			return ERR_ALLOC;
 		}
-		(*chararcters_count)--;
+		*Mp = merged;
+
+		for(int j = 0; j < 2; ++j) {
+			for (int i = 0; i < local_count - 1; i++) {
+			    local_nodes[i] = local_nodes[i + 1];
+			}
+			(local_count)--;
+		}
+
+		// Looks for where to put Mp
+		int idx = local_count;
+		for(int i = 0; i < local_count ; ++i) {
+			if (local_nodes[i]->frequency >= merged.frequency) { 
+				idx = i;
+				break;
+			}
+		}
+
+		Node **tmpN = realloc(local_nodes, (local_count + 1) * sizeof(Node *));
+		if (tmpN == NULL) {
+			free(Mp);
+			free(local_nodes);
+			return ERR_ALLOC;
+		}
+		for(int k = local_count - 1; k >= idx; k--) {
+			tmpN[k + 1] = tmpN[k];
+		}
+
+		local_nodes = tmpN;
+		local_nodes[idx] = Mp;
+		local_count++;
 	}
 
-	for (int k = 0; k < local_count; ++k) {
-		printf("%d\n", local_nodes[k].frequency); // THIS WORKS WHAT THE FUCK
-	}
+	// for (int k = 0; k < 2; ++k) {
+	// 	printf("%d ", local_nodes[k].frequency); // THIS WORKS WHAT THE FUCK (Still needs everything else and all of the left right shit)
+	// 	printf("%c\n", local_nodes[k].charName); // THIS WORKS WHAT THE FUCK (Still needs everything else and all of the left right shit)
+	// 	printf("%d\n", local_nodes[k].left->frequency); // THIS WORKS WHAT THE FUCK (Still needs everything else and all of the left right shit)
+	// 	printf("%d\n", local_nodes[k].right->frequency); // THIS WORKS WHAT THE FUCK (Still needs everything else and all of the left right shit)
+	// }
 
 	return SUCCESS;
 }
