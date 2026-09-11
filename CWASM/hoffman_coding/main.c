@@ -29,5 +29,6 @@ int main(void) {
 	}
 
 	free(characters);
+	free(nodes);
 	return 0;
 }

@@ -3,6 +3,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "assign_num.h"
 
 int make_huffman_tree(Character **characters, int *chararcters_count, Node **nodes, size_t *node_count) {
 
@@ -83,6 +84,9 @@ int make_huffman_tree(Character **characters, int *chararcters_count, Node **nod
 		local_nodes[idx] = Mp;
 		local_count++;
 	}
+
+	nodes = local_nodes;
+    	*node_count = local_count;
 
 	return SUCCESS;
 }
