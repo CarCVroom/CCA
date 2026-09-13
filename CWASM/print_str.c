@@ -4,7 +4,7 @@ void printStr(char *str);
 
 int main(void) {
 	printStr("Hello\n");
-	
+
 }
 
 void printStr(char *str) {

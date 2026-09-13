@@ -4,6 +4,6 @@
 #include "tree.h"
 #include <stddef.h>
 
-int assign_num(Node **nodes, size_t *node_count);
+int assign_num(Node **nodes, int *node_count);
 
 #endif

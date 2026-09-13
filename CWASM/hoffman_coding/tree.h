@@ -8,6 +8,7 @@
 typedef struct Node {
 	char charName;
 	int frequency;
+	int binary_num1or0;
 	
 	struct Node *left;
 	struct Node *right;

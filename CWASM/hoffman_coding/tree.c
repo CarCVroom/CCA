@@ -85,6 +85,8 @@ int make_huffman_tree(Character **characters, int *chararcters_count, Node **nod
 		local_count++;
 	}
 
+	assign_num(local_nodes, &local_count);
+
 	nodes = local_nodes;
     	*node_count = local_count;
 
