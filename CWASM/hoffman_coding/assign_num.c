@@ -3,11 +3,20 @@
 #include "tree.h"
 #include <stdio.h>
 
-int assign_num(Node **nodes, int *node_count) {
+void assign_num(Node *node, char code[256], int depth) {
 	/*
 	 * left = 0
 	 * right = 1
 	 */
-	printf("%d\n", nodes[0]->right->frequency);
-	printf("%c\n", nodes[0]->right->charName);
+	if (node->left == NULL && node->right == NULL) {
+		code[depth] = '\0';
+		printf("%c: %s\n",node->charName,  code);
+		return;	
+	}
+
+	code[depth] = '0';
+	assign_num(node->left, code, depth + 1);
+
+	code[depth] = '1';
+	assign_num(node->right, code, depth + 1);
 }
