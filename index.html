@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +11,66 @@
 </head>
 
 <body>
-    <div class="centered">
-        <h1>Carc's Compression Algorithms</h1>
 
-        <p>Enter text to be compressed using RLE</p>
+    <div class="page">
 
-        <input type="text" placeholder="Enter text" id="input"> 
-        <p id="output"></p>
+        <!-- RLE / Huffman toggle -->
+        <div class="toggle">
+
+            <input type="radio" id="option1" name="option" checked>
+            <label for="option1">RLE</label>
+
+            <input type="radio" id="option2" name="option">
+            <label for="option2">Huffman</label>
+
+            <div class="slider"></div>
+
+        </div>
+
+
+        <!-- RLE content -->
+        <div id="rle-content" class="content">
+
+            <h1>RLE Compression</h1>
+
+            <p>Enter text to be compressed using RLE.</p>
+
+            <input type="text" placeholder="Enter text">
+
+        </div>
+
+
+        <!-- Huffman content -->
+        <div id="huffman-content" class="content">
+
+            <h1>Huffman Compression</h1>
+
+            <p>Enter text to be compressed using Huffman coding.</p>
+
+            <input type="text" placeholder="Enter text">
+
+        </div>
+
     </div>
+
+
+    <script>
+
+        const rle = document.getElementById("rle-content");
+        const huffman = document.getElementById("huffman-content");
+
+        document.getElementById("option1").addEventListener("change", () => {
+            rle.style.display = "block";
+            huffman.style.display = "none";
+        });
+
+        document.getElementById("option2").addEventListener("change", () => {
+            rle.style.display = "none";
+            huffman.style.display = "block";
+        });
+
+    </script>
+
 </body>
+
 </html>

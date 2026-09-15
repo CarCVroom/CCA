@@ -1,26 +1,167 @@
 body {
-    color: white;
-    background: #111;
+    margin: 0;
+
     font-family: Arial, Helvetica, sans-serif;
+
+    background: #f5f5f5;
+    color: #222;
 }
 
-.centered {
-    text-align: center;
-    margin-top: 100px;
+
+/* Main page container */
+
+.page {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 50px;
+
+    box-sizing: border-box;
 }
 
-input {
+
+/* RLE / Huffman toggle */
+
+.toggle {
+    position: relative;
+
+    display: flex;
+
     width: 400px;
-    padding: 12px;
+    height: 70px;
+
+    background: #dedede;
+
+    border-radius: 10px;
+
+    padding: 5px;
+
+    box-sizing: border-box;
+}
+
+
+/* Hide the actual radio buttons */
+
+.toggle input {
+    display: none;
+}
+
+
+/* Text inside buttons */
+
+.toggle label {
+    position: relative;
+
+    z-index: 2;
+
+    width: 50%;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    color: #555;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+
+/* White selected section */
+
+.slider {
+    position: absolute;
+
+    z-index: 1;
+
+    top: 5px;
+    left: 5px;
+
+    width: calc(50% - 5px);
+    height: 60px;
+
+    background: white;
+
+    border-radius: 7px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+
+    transition: transform 0.2s ease;
+}
+
+
+/* Move selected section to Huffman */
+
+#option2:checked ~ .slider {
+    transform: translateX(100%);
+}
+
+
+/* Compression content */
+
+.content {
+    width: 700px;
+
+    margin-top: 60px;
+
+    text-align: center;
+}
+
+
+/* RLE is shown initially */
+
+#huffman-content {
+    display: none;
+}
+
+
+/* Headings */
+
+.content h1 {
+    font-size: 36px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Description */
+
+.content p {
+    font-size: 18px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Text input */
+
+.content input {
+    width: 500px;
+
+    padding: 14px;
+
+    box-sizing: border-box;
+
     font-size: 16px;
 
-    color: white;
-    background: #222;
-    border: 1px solid #555;
+    border: 1px solid #bbb;
+
     border-radius: 6px;
+
+    background: white;
+
+    color: #222;
 }
 
-input:focus {
+.content input:focus {
     outline: none;
-    border-color: #888;
+
+    border-color: #777;
 }
