@@ -4,9 +4,10 @@
 #include <stdio.h>
 
 int assign_num(Node **nodes, int *node_count) {
-	nodes[0]->binary_num1or0 = 1;
-	nodes[0]->left->binary_num1or0 = 1;
-	nodes[0]->right->binary_num1or0 = 0;
-
-	return SUCCESS;
+	/*
+	 * left = 0
+	 * right = 1
+	 */
+	printf("%d\n", nodes[0]->right->frequency);
+	printf("%c\n", nodes[0]->right->charName);
 }
