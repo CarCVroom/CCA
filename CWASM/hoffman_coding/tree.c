@@ -1,16 +1,15 @@
 #include "tree.h"
 #include "frequency.h"
 #include <stddef.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include "assign_num.h"
 
-int make_huffman_tree(Character **characters, int *chararcters_count, Node **nodes, size_t *node_count, CharCode *table, int *table_count ) {
+int make_huffman_tree(Character **characters, int *chararcters_count, CharCode *table, int *table_count ) {
 
 	Node **local_nodes = NULL;
     	int local_count = 0;
 
-	for (size_t i = 0; i < *chararcters_count; ++i) {
+	for (int i = 0; i < *chararcters_count; ++i) {
 	
 		Node node = {
 			.frequency = (*characters)[i].frequency,
@@ -89,8 +88,6 @@ int make_huffman_tree(Character **characters, int *chararcters_count, Node **nod
 	char code[256];
 	assign_num(local_nodes[0], code, depth, table, table_count);
 
-	nodes = local_nodes;
-    	*node_count = local_count;
-
+	free(local_nodes);
 	return SUCCESS;
 }

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "assign_num.h"
 #include <stdlib.h>
+#include <string.h>
 
 void assign_num(Node *node, char code[256], int depth, CharCode *table, int *table_count ) {
 	/*
@@ -13,19 +14,20 @@ void assign_num(Node *node, char code[256], int depth, CharCode *table, int *tab
 		// Replace with the table  
 		printf("%c: %s\n",node->charName,  code);
 
-		CharCode a = {
-			.charName = node->charName;
-			.code = code;
+		CharCode table_entry = {
+			.charName = node->charName,
 		};
+		strcpy(table_entry.code, code);
 
 		CharCode *tmpN = realloc(table, (*table_count + 1) * sizeof(CharCode));
 		if (tmpN == NULL) {
 			free(table);
 			return;
 		}
-			
+		
+		table_count++;
 		table = tmpN;
-		table[table - 1] = a ;
+		table[*table_count - 1] = table_entry;
 		return;	
 	}
 
