@@ -14,6 +14,11 @@ typedef struct Node {
 	struct Node *right;
 } Node;
 
-int make_huffman_tree(Character **characters, int *chararcters_count, Node **nodes, size_t *node_count);
+typedef struct {
+	char charName;
+	char code[256];
+} CharCode;
+
+int make_huffman_tree(Character **characters, int *chararcters_count, Node **nodes, size_t *node_count, CharCode *table, int *table_count );
 
 #endif

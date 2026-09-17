@@ -4,11 +4,6 @@
 #include "tree.h"
 #include <stddef.h>
 
-typedef struct {
-	char charName;
-	char code[256];
-} CharCode;
-
-void assign_num(Node *node, char code[256], int depth);
+void assign_num(Node *node, char code[256], int depth, CharCode *table, int *table_count  );
 
 #endif

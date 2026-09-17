@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "frequency.h"
 #include "tree.h"
+#include "assign_num.h"
 
 int main(void) {
 	//char input[] = "AABBBBBBBBBBBBBBbbbbbCCCCCCCddddeeF"; 
@@ -23,12 +24,16 @@ int main(void) {
 	Node *nodes = NULL;
 	size_t node_count = 0;
 
-	int result_huff_tree_make = make_huffman_tree(&characters,&chararcters_count, &nodes,  &node_count);	
+	CharCode *table = NULL;
+	int table_count = 0;
+
+	int result_huff_tree_make = make_huffman_tree(&characters,&chararcters_count, &nodes,  &node_count, table, &table_count );	
 	if (result_huff_tree_make != SUCCESS) {
 		printf("Something went wrong, error code: %d", result_huff_tree_make);
 	}
 
 	free(characters);
 	free(nodes);
+	free(table);
 	return 0;
 }

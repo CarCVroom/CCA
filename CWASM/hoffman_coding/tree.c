@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "assign_num.h"
 
-int make_huffman_tree(Character **characters, int *chararcters_count, Node **nodes, size_t *node_count) {
+int make_huffman_tree(Character **characters, int *chararcters_count, Node **nodes, size_t *node_count, CharCode *table, int *table_count ) {
 
 	Node **local_nodes = NULL;
     	int local_count = 0;
@@ -87,7 +87,7 @@ int make_huffman_tree(Character **characters, int *chararcters_count, Node **nod
 	
 	int depth = 0;
 	char code[256];
-	assign_num(local_nodes[0], code, depth);
+	assign_num(local_nodes[0], code, depth, table, table_count);
 
 	nodes = local_nodes;
     	*node_count = local_count;
