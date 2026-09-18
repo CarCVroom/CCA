@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void assign_num(Node *node, char code[256], int depth, CharCode *table, int *table_count ) {
+void assign_num(Node *node, char code[256], int depth, CharCode **table, int *table_count ) {
 	/*
 	 * left = 0
 	 * right = 1
@@ -19,15 +19,17 @@ void assign_num(Node *node, char code[256], int depth, CharCode *table, int *tab
 		};
 		strcpy(table_entry.code, code);
 
-		CharCode *tmpN = realloc(table, (*table_count + 1) * sizeof(CharCode));
+		CharCode *tmpN = realloc(*table, (*table_count + 1) * sizeof(CharCode));
 		if (tmpN == NULL) {
-			free(table);
 			return;
 		}
-		
-		table_count++;
-		table = tmpN;
-		table[*table_count - 1] = table_entry;
+
+		*table = tmpN;
+		(*table)[*table_count] = table_entry;
+		*table_count = *table_count + 1;
+		// (*table_count)++;
+
+		// printf("%c: %s\n",table->charName,  table->code);
 		return;	
 	}
 
