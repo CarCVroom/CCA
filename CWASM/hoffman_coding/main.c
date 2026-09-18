@@ -29,10 +29,6 @@ int main(void) {
 	}
 	
 	printf("%d", table_count);
-	for (int k = 0; k < table_count; ++k) {
-		printf("hi\n");
-		printf("%c: %s\n", table[k].charName, table[k].code);
-	}
 
 	free(characters);
 	free(table);
