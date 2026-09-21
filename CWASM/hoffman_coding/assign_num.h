@@ -4,6 +4,6 @@
 #include "tree.h"
 #include <stddef.h>
 
-void assign_num(Node *node, char code[256], int depth, CharCode **table, int *table_count  );
+void assign_num(Node *node, char code[256], int depth, CharCode **table, int *table_count, int *lookup);
 
 #endif

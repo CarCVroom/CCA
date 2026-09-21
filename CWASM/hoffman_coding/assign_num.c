@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void assign_num(Node *node, char code[256], int depth, CharCode **table, int *table_count ) {
+void assign_num(Node *node, char code[256], int depth, CharCode **table, int *table_count, int *lookup) {
 	/*
 	 * left = 0
 	 * right = 1
@@ -26,6 +26,7 @@ void assign_num(Node *node, char code[256], int depth, CharCode **table, int *ta
 
 		*table = tmpN;
 		(*table)[*table_count] = table_entry;
+		lookup[(unsigned char)table_entry.charName] = *table_count;
 		*table_count = *table_count + 1;
 		// (*table_count)++;
 
@@ -34,8 +35,8 @@ void assign_num(Node *node, char code[256], int depth, CharCode **table, int *ta
 	}
 
 	code[depth] = '0';
-	assign_num(node->left, code, depth + 1, table, table_count );
+	assign_num(node->left, code, depth + 1, table, table_count, lookup);
 
 	code[depth] = '1';
-	assign_num(node->right, code, depth + 1, table, table_count );
+	assign_num(node->right, code, depth + 1, table, table_count, lookup );
 }
