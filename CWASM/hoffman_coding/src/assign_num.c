@@ -12,7 +12,6 @@ void assign_num(Node *node, char code[256], int depth, CharCode **table, int *ta
 	if (node->left == NULL && node->right == NULL) {
 		code[depth] = '\0';
 		// Replace with the table  
-		printf("%c: %s\n",node->charName,  code);
 
 		CharCode table_entry = {
 			.charName = node->charName,

@@ -10,7 +10,8 @@
 void decompress_test(char *output, char *reverse_enginerd,int *output_length, CharCode *table, int table_count, int lookup[256]);
 
 int main(void) {
-	char input[] = "AABBBBBBBBBBBBBBbbbbbCCCCCCCddddeeF"; 
+	char input[] = "Aoa%ZnQK9!zPxrS1xyH0kWX$yfQkkUH4Ya9+FGQt=O2MJQk3ddtP6zj+sfXKuXr$b202ACcJO&7Ah2V7hWhJfjTQomH$2Vue8@cM";
+	//char input[] = "AABBBBBBBBBBBBBBbbbbbCCCCCCCddddeeF"; 
 	//char input[] = "bccfffcddabddefeeeffe"; 
 	char output[sizeof(input)]; 
 	char new_str[sizeof(input)]; 
@@ -40,10 +41,10 @@ int main(void) {
 	compress(input, output, &output_length ,table, table_count, lookup);
 
 	//printf("Output length: %d bytes\n", output_length);
-	for (int i = 0; i < output_length; i++) {
-    		printf("%02X ", (unsigned char)output[i]);
-	}
-	printf("\n");
+	// for (int i = 0; i < output_length; i++) {
+	//    		printf("%02X ", (unsigned char)output[i]);
+	// }
+	// printf("\n"); // prints the raw hex
 
 	decompress_test(output, new_str, &output_length, table, table_count,lookup);
 	printf("Input: %s\n", input);
