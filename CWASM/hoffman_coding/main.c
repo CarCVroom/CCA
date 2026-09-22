@@ -55,24 +55,33 @@ int main(void) {
 }
 
 void decompress_test(char *output, char *reverse_enginerd,int *output_length, CharCode *table, int table_count, int lookup[256]) {
-	unsigned char byte = 0;
-	int bit_count = 0;
-	int bit_index = 0;
-	int bit_tally = 0;
-	int bit_temp = 0;
+	int padding = (unsigned char) output[0];
+	int total_bits = (*output_length - 1) * 8 - padding;
+	char current_code[256] = "";
+	int code_len = 0;
+	int out_pos = 0;
 
-	while (output) {
-		// Read bits until match
-		for (int i ; i < table_count; i++) {
-			// do the they match in something in the table		
-			if () {
-				bit_temp += output[bit_index];
-				bit_index = 0;
-			} else {
-				bit_index++;
+	for (int bit_num = 0; bit_num < total_bits; bit_num++) {
+		int byte_index = 1 + (bit_num / 8);
+		int bit_in_byte = bit_num % 8;
+
+		int bit = (output[byte_index] >> (7 - bit_in_byte)) & 1;
+
+		current_code[code_len] = bit ? '1' : '0';
+		code_len++;
+		current_code[code_len] = '\0';
+
+		for (int i = 0; i < table_count; i++) {
+			if (strcmp(current_code, table[i].code) == 0) {
+				reverse_enginerd[out_pos] = table[i].charName;	
+				out_pos++;
+
+				code_len = 0;
+				current_code[0] = '\0';
+				break;
 			}
-		}	
-		
-		// Assume no match is padding on the end
+		}
 	}
+
+	reverse_enginerd[out_pos] = '\0';
 }

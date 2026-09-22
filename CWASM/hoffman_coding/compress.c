@@ -4,7 +4,7 @@
 void compress(char *input, char *output ,int *output_length, CharCode *table, int table_count, int *lookup) {
 	unsigned char byte = 0;
 	int bit_count = 0;
-	int output_index = 0;
+	int output_index = 1;
 
 	for (int i = 0; input[i] != '\0'; ++i) {
 		// write in as raw bits
@@ -31,9 +31,13 @@ void compress(char *input, char *output ,int *output_length, CharCode *table, in
 	}
 
 	if (bit_count > 0) {
-		byte <<= (8 - bit_count);
+		int padding = 8 -bit_count;
+		byte <<= padding;
 		output[output_index] = byte;
 		output_index++;
+		output[0] = padding;
+	} else {
+		output[0] = 0;
 	}
 
 	*output_length = output_index;
