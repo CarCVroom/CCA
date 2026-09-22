@@ -1,5 +1,5 @@
-#include "frequency.h"
-#include "sort.h"
+#include "../include/frequency.h"
+#include "../include/sort.h"
 
 int partition(Character *characters, int l, int r) {
 	int pivot = characters[r].frequency;	

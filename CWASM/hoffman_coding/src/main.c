@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 	
-#include "frequency.h"
-#include "tree.h"
-#include "compress.h"
+#include "../include/frequency.h"
+#include "../include/tree.h"
+#include "../include/compress.h"
 
 void decompress_test(char *output, char *reverse_enginerd,int *output_length, CharCode *table, int table_count, int lookup[256]);
 

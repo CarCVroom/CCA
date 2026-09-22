@@ -1,9 +1,10 @@
-#include "tree.h"
-#include "frequency.h"
 #include <stddef.h>
 #include <stdlib.h>
-#include "assign_num.h"
 #include <stdio.h>
+
+#include "../include/tree.h"
+#include "../include/frequency.h"
+#include "../include/assign_num.h"
 
 int make_huffman_tree(Character **characters, int *chararcters_count, CharCode **table, int *table_count, int *lookup) {
 

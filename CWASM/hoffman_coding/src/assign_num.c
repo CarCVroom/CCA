@@ -1,6 +1,5 @@
-#include "tree.h"
-#include <stdio.h>
-#include "assign_num.h"
+#include "../include/tree.h"
+#include "../include/assign_num.h"
 #include <stdlib.h>
 #include <string.h>
 

@@ -1,8 +1,8 @@
-#include "frequency.h"
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "sort.h"
+
+#include "../include/frequency.h"
+#include "../include/sort.h"
 
 int frequency_count(char *input, Character **characters, int *chararcters_count) {
 	char *chache = malloc(4);

@@ -1,4 +1,5 @@
-#include "compress.h"
+#include "../include/compress.h"
+
 #include <string.h>
 
 void compress(char *input, char *output ,int *output_length, CharCode *table, int table_count, int *lookup) {
