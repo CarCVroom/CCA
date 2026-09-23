@@ -9,9 +9,16 @@
 
 void decompress_test(char *output, char *reverse_enginerd,int *output_length, CharCode *table, int table_count, int lookup[256]);
 
-int main(void) {
-	char input[] = "Aoa%ZnQK9!zPxrS1xyH0kWX$yfQkkUH4Ya9+FGQt=O2MJQk3ddtP6zj+sfXKuXr$b202ACcJO&7Ah2V7hWhJfjTQomH$2Vue8@cM";
-	//char input[] = "AABBBBBBBBBBBBBBbbbbbCCCCCCCddddeeF"; 
+int main(int argc, char *argv[]) {
+	// char *input;
+	// if (argc > 1) {
+	// 	input = argv[1];
+	// } else {
+	// 	perror("You need pass in a exteranl argument for this to work");
+	// }
+
+	char input[] = "AABBBBBBBBBBBBBBbbbbbCCCCCCCddddeeF5yX+,crq+9hQrpRv)nt=nE7X.ma{KLtwt,+14nnQQyu;/,A--bfeS,BR$kZw30A.RfdT[yh4?yU)KwMDAX}zm;)&p+(bLGY+:zD?f-yUZweA4VPpp-r/1V3@-TY%h{*w0JVxNa;m+2ibK8_p$N++=S[v$&;R7Q.1WvnbE.m5N3MmXg1.2&=%,yv6AaJie/Bw9Fmq6z0VX]DmQZxwmx(YA-[8&!iN4/!xuGWP-rZ!i?0W,SBPh0X+Md+z03L%u)XyKpyQi6%wN*.P+eJw@5_AGVtN?mwv!zfJGE&hq9q;3%XvMbeDm2X9h.&*9pf[j2P?Pe#.g?a6-q6}@+AXR&5H@tP;pREvdbMDY;F)}y6jm@y+X/eAnEr_7z6aZf?0.?!dhxuE{SfBXzXTVbk8Fn{@eHEyA{&qDc1T$g(nK!Q1B3ie*6BATt2:F]Gf/B7b,yA]5;Jnc8adR$jhu4&Tb(z+RwXzDf46Yz=!i9BV2b1(LVUhVSnELdeB9c1T0jwcpqt%fq{PF)jD,++m({dL?wX=b{9!_vP%64m._+5RmG8:#JHdme]%vE@+N}g;qA{af.XizN&tiPL2w01$&9NugH(Rr*iC!a@{W5&tmv#JA76M]%5jn7!#X:Q;&n}P#H[4X5!iQ.hP/4N=hM,1/2P{!!iW+v-Rdv(r#E*9[gA,7i8?_{LuUX@[ce?S]#0kyu8dd1-YWc?P1hqm(AQ&Fi6HNr11,#Se8xCbitB?Ye]+-W3]9pDi*tTmmGk=NQMr?V}Ztz#vdfH)kV;he]4yrC%Yc)Q#FZk,B3gZmbnQ571&Z/BW(Gh6:u[[74D%hy(;C;1iMZ9[aFb9g_[LVU+.#+)T=f+%SD%_V0D;,vhqB2mqd((mu48P#$$.)JC_XC?jN.zkDpjB_7&@um((1Y3Uy]g%}P_w8YuMubi(Lr6d&)27VxHezx_q!]e.ZbPD@kR.m3W/d+ay:g+v;nmAJ+mtEL9JHj[Fgt[*HD4Z2LA%1!-L:dp."; 
+	//5yX+,crq+9hQrpRv)nt=nE7X.ma{KLtwt,+14nnQQyu;/,A--bfeS,BR$kZw30A.RfdT[yh4?yU)KwMDAX}zm;)&p+(bLGY+:zD?f-yUZweA4VPpp-r/1V3@-TY%h{*w0JVxNa;m+2ibK8_p$N++=S[v$&;R7Q.1WvnbE.m5N3MmXg1.2&=%,yv6AaJie/Bw9Fmq6z0VX]DmQZxwmx(YA-[8&!iN4/!xuGWP-rZ!i?0W,SBPh0X+Md+z03L%u)XyKpyQi6%wN*.P+eJw@5_AGVtN?mwv!zfJGE&hq9q;3%XvMbeDm2X9h.&*9pf[j2P?Pe#.g?a6-q6}@+AXR&5H@tP;pREvdbMDY;F)}y6jm@y+X/eAnEr_7z6aZf?0.?!dhxuE{SfBXzXTVbk8Fn{@eHEyA{&qDc1T$g(nK!Q1B3ie*6BATt2:F]Gf/B7b,yA]5;Jnc8adR$jhu4&Tb(z+RwXzDf46Yz=!i9BV2b1(LVUhVSnELdeB9c1T0jwcpqt%fq{PF)jD,++m({dL?wX=b{9!_vP%64m._+5RmG8:#JHdme]%vE@+N}g;qA{af.XizN&tiPL2w01$&9NugH(Rr*iC!a@{W5&tmv#JA76M]%5jn7!#X:Q;&n}P#H[4X5!iQ.hP/4N=hM,1/2P{!!iW+v-Rdv(r#E*9[gA,7i8?_{LuUX@[ce?S]#0kyu8dd1-YWc?P1hqm(AQ&Fi6HNr11,#Se8xCbitB?Ye]+-W3]9pDi*tTmmGk=NQMr?V}Ztz#vdfH)kV;he]4yrC%Yc)Q#FZk,B3gZmbnQ571&Z/BW(Gh6:u[[74D%hy(;C;1iMZ9[aFb9g_[LVU+.#+)T=f+%SD%_V0D;,vhqB2mqd((mu48P#$$.)JC_XC?jN.zkDpjB_7&@um((1Y3Uy]g%}P_w8YuMubi(Lr6d&)27VxHezx_q!]e.ZbPD@kR.m3W/d+ay:g+v;nmAJ+mtEL9JHj[Fgt[*HD4Z2LA%1!-L:dp.
 	//char input[] = "bccfffcddabddefeeeffe"; 
 	char output[sizeof(input)]; 
 	char new_str[sizeof(input)]; 
